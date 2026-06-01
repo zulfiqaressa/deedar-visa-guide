@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deedar Visa Guide — North Macedonia Jamat</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #B8860B;
+    --gold-light: #F5E6B8;
+    --gold-pale: #FBF5E0;
+    --green: #1B4332;
+    --green-mid: #2D6A4F;
+    --green-light: #D8F3DC;
+    --cream: #FDFAF3;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --ink-muted: #7A7A7A;
+    --red: #C0392B;
+    --red-light: #FDECEA;
+    --border: rgba(184,134,11,0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--green);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  .nav-brand {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--gold-light);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    background: var(--green);
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(184,134,11,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.3s forwards;
+  }
+
+  /* COUNTDOWN */
+  .countdown-wrap {
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+    margin-bottom: 2rem;
+  }
+  .countdown-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.75rem;
+  }
+  .countdown {
+    display: inline-flex;
+    gap: 1rem;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(184,134,11,0.3);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+  }
+  .cd-unit { text-align: center; min-width: 52px; }
+  .cd-num {
+    font-family: 'Lora', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+  .cd-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+  .cd-sep {
+    font-size: 2rem;
+    color: rgba(184,134,11,0.4);
+    font-weight: 300;
+    margin-top: -6px;
+  }
+
+  .deadline-pills {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.5s forwards;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .pill-urgent { background: rgba(192,57,43,0.2); color: #FF9B8A; border: 1px solid rgba(192,57,43,0.3); }
+  .pill-info { background: rgba(184,134,11,0.15); color: var(--gold-light); border: 1px solid rgba(184,134,11,0.25); }
+  .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* SECTIONS */
+  section { padding: 4rem 2rem; max-width: 760px; margin: 0 auto; }
+  .section-tag {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .section-sub {
+    font-size: 14px;
+    color: var(--ink-muted);
+    margin-bottom: 2rem;
+  }
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+    border-radius: 99px;
+  }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 1rem; }
+  .step {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    transition: box-shadow 0.2s;
+  }
+  .step:hover { box-shadow: 0 4px 20px rgba(184,134,11,0.1); }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--green);
+    color: var(--gold-light);
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .step-content p {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .step-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--green-mid);
+    text-decoration: none;
+    border: 1px solid rgba(45,106,79,0.3);
+    padding: 4px 12px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .step-link:hover { background: var(--green-light); }
+  .step-link svg { width: 12px; height: 12px; }
+
+  /* CHECKLIST */
+  .checklist-grid { display: flex; flex-direction: column; gap: 8px; }
+  .doc-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .doc-item:hover { border-color: var(--gold); background: var(--gold-pale); }
+  .doc-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: var(--gold-light);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .doc-body { flex: 1; }
+  .doc-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .doc-note { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
+  .doc-arrow {
+    color: var(--ink-muted);
+    margin-top: 4px;
+    flex-shrink: 0;
+    transition: transform 0.15s;
+  }
+  .doc-item:hover .doc-arrow { transform: translateX(3px); color: var(--gold); }
+
+  .checklist-note {
+    margin-top: 1rem;
+    background: var(--green-light);
+    border: 1px solid rgba(27,67,50,0.15);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-size: 13px;
+    color: var(--green);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 6px; }
+  .faq-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 1rem 1.25rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.15s;
+  }
+  .faq-q:hover { background: var(--gold-pale); }
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--green-light);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--green); color: #fff; }
+  .faq-a {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.2s;
+    padding: 0 1.25rem;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 1.25rem 1rem; }
+
+  /* USEFUL LINKS */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .link-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(184,134,11,0.1); }
+  .link-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .link-icon.green { background: var(--green-light); }
+  .link-icon.gold { background: var(--gold-light); }
+  .link-icon.red { background: var(--red-light); }
+  .link-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .link-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
+  .link-arrow { font-size: 11px; color: var(--green-mid); margin-top: auto; }
+
+  /* FOOTER */
+  footer {
+    background: var(--green);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+  footer span { color: var(--gold-light); }
+
+  /* SECTION BG ALT */
+  .bg-alt { background: #fff; }
+  .bg-alt section { background: #fff; }
+  .full-bg-alt { background: #fff; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 0 1rem; }
+    .nav-links { gap: 1rem; }
+    .countdown { gap: 0.6rem; padding: 0.75rem 1rem; }
+    .cd-num { font-size: 1.8rem; }
+    section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Deedar Visa Guide</div>
+  <div class="nav-links">
+    <a href="#steps">Steps</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#faq">FAQ</a>
+    <a href="#links">Links</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">North Macedonia Jamat · Germany Deedar 2026</div>
+  <h1>Your <span>Deedar Visa</span><br>preparation guide</h1>
+  <p class="hero-sub">Everything you need to apply for your German Schengen visa — step by step, in one place.</p>
+
+  <div class="countdown-wrap">
+    <div class="countdown-label">⏳ Time left to book your embassy appointment</div>
+    <div class="countdown">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">Days</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">Hours</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">Mins</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">Secs</span></div>
+    </div>
+  </div>
+
+  <div class="deadline-pills">
+    <div class="pill pill-urgent"><span class="pill-dot"></span> June 5 — Book appointment + gather all documents</div>
+    <div class="pill pill-info"><span class="pill-dot"></span> July 2 — Deedar begins</div>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="full-bg-alt" id="steps">
+  <section>
+    <div class="section-tag">Getting started</div>
+    <div class="section-title">What you need to do this week</div>
+    <p class="section-sub">Follow these steps in order. Do not wait for the facilitation letter to start on the others.</p>
+    <div class="divider"></div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Gather all your documents</h3>
+          <p>Start collecting everything on the checklist below — bank statements, enrollment proof, residence permit, insurance, and photos. Do not wait for the facilitation letter to get started on the rest.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Fill in the VIDEX visa application form</h3>
+          <p>Complete the official German short-stay visa form online. You will need your passport, travel dates, accommodation address in Germany, and purpose of visit.</p>
+          <a class="step-link" href="https://videx.diplo.de/videx/visum-erfassung/en/videx-kurzfristiger-aufenthalt" target="_blank">
+            Open VIDEX form
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2V7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Book your embassy appointment in Skopje</h3>
+          <p>Visit the German Embassy Skopje visa page to book your appointment slot. Slots fill up fast — do this as soon as possible, ideally before June 5th.</p>
+          <a class="step-link" href="https://skopje.diplo.de/mk-de/service/05-visaeinreise/2717196-2717196" target="_blank">
+            Embassy Skopje — book appointment
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2V7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Wait for your visa facilitation letter</h3>
+          <p>The facilitation letter is being arranged by the council and is expected very soon. Once you receive it, you will have everything needed to submit your full application.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Submit your application at the embassy</h3>
+          <p>Attend your booked appointment with all documents. The German embassy typically takes around 20 working days to process Schengen visa applications, so timing is critical.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CHECKLIST -->
+<div id="checklist">
+  <section>
+    <div class="section-tag">Document checklist</div>
+    <div class="section-title">8 documents you need</div>
+    <p class="section-sub">Click any item to view a sample or template in Google Drive.</p>
+    <div class="divider"></div>
+    <div class="checklist-grid">
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">1</div>
+        <div class="doc-body">
+          <div class="doc-title">Visa facilitation letter</div>
+          <div class="doc-note">Issued by the organising council — being arranged, expected very soon</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">2</div>
+        <div class="doc-body">
+          <div class="doc-title">Bank account statement</div>
+          <div class="doc-note">Past 3–6 months · Traditional bank only — Wise, Payoneer, and Revolut are not accepted</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">3</div>
+        <div class="doc-body">
+          <div class="doc-title">Proof of residence in Germany</div>
+          <div class="doc-note">Hotel, hostel, or relative's address confirmation</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">4</div>
+        <div class="doc-body">
+          <div class="doc-title">Travel health insurance</div>
+          <div class="doc-note">Must cover the full duration of your stay in Germany</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">5</div>
+        <div class="doc-body">
+          <div class="doc-title">Proof of university enrollment</div>
+          <div class="doc-note">Current enrollment certificate from your university</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">6</div>
+        <div class="doc-body">
+          <div class="doc-title">Residence permit</div>
+          <div class="doc-note">Must have at least 2–3 months of validity remaining after your return date</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">7</div>
+        <div class="doc-body">
+          <div class="doc-title">Completed visa application form</div>
+          <div class="doc-note">Fill online via the VIDEX link above — help is available for first-time applicants</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+      <a class="doc-item" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="doc-num">8</div>
+        <div class="doc-body">
+          <div class="doc-title">2 passport-sized photos</div>
+          <div class="doc-note">White background, recent — standard biometric photo format</div>
+        </div>
+        <svg class="doc-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+
+    </div>
+    <div class="checklist-note">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" style="flex-shrink:0;margin-top:2px"><circle cx="9" cy="9" r="7"/><path d="M9 8v4M9 6h.01"/></svg>
+      <span>Need help filling the visa form? Volunteers are available to assist — especially for first-time applicants. Reach out via the facilitation team in your Jamat group.</span>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<div class="full-bg-alt" id="faq">
+  <section>
+    <div class="section-tag">Frequently asked questions</div>
+    <div class="section-title">Common questions answered</div>
+    <p class="section-sub">Everything you need to know about the German Schengen visa process.</p>
+    <div class="divider"></div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does the German embassy take to process visas?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">The German embassy typically takes around 20 working days to process Schengen visa applications. This is why it is critical to book your appointment and submit all documents as early as possible — do not wait until the last minute.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I use my Wise, Revolut, or Payoneer statement?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">No. The German embassy does not accept statements from digital/fintech banks such as Wise, Revolut, or Payoneer. You must provide a statement from a traditional bank account showing the past 3–6 months of transactions.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What should I put as my address in Germany?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">You need to provide a confirmed accommodation address in Germany — this can be a hotel booking confirmation, a hostel reservation, or a letter from relatives/friends hosting you. The address must be for the entire duration of your stay.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          My residence permit expires soon — is that a problem?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Yes, this is important. Your residence permit must have at least 2–3 months of validity remaining after your expected return date from Germany. If your permit is expiring soon, please address this urgently before applying for the visa.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I have never applied for a Schengen visa before — where do I start?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Start by gathering all documents on the checklist. Volunteers from the facilitation team are available to help you fill in the VIDEX application form. Reach out via your Jamat group and someone will guide you through the process step by step.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need travel insurance and how much coverage is required?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Yes, travel health insurance is mandatory for a Schengen visa. It must cover the full duration of your stay and provide a minimum of €30,000 coverage for medical emergencies. Make sure the policy explicitly states it is valid for the Schengen area.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the visa facilitation letter and when will I receive it?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">The visa facilitation letter is an official letter from the organising council confirming your participation in the Deedar program. It is currently being arranged and is expected very soon. Do not wait for this letter to start collecting your other documents — have everything else ready so you can move quickly once it arrives.</div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- USEFUL LINKS -->
+<div id="links">
+  <section>
+    <div class="section-tag">Useful links</div>
+    <div class="section-title">Everything in one place</div>
+    <p class="section-sub">All the official resources you need for your application.</p>
+    <div class="divider"></div>
+    <div class="links-grid">
+
+      <a class="link-card" href="https://drive.google.com/drive/folders/1p64zHM1Gs0AwFvIrqF2t9UPGnUUGZQjn?usp=drive_link" target="_blank">
+        <div class="link-icon green">📁</div>
+        <div class="link-title">Document templates</div>
+        <div class="link-desc">Google Drive folder with sample documents and templates for your application</div>
+        <div class="link-arrow">Open Drive →</div>
+      </a>
+
+      <a class="link-card" href="https://videx.diplo.de/videx/visum-erfassung/en/videx-kurzfristiger-aufenthalt" target="_blank">
+        <div class="link-icon gold">📋</div>
+        <div class="link-title">VIDEX visa form</div>
+        <div class="link-desc">Official German short-stay visa application form — fill this online</div>
+        <div class="link-arrow">Open VIDEX →</div>
+      </a>
+
+      <a class="link-card" href="https://skopje.diplo.de/mk-de/service/05-visaeinreise/2717196-2717196" target="_blank">
+        <div class="link-icon red">🏛️</div>
+        <div class="link-title">German Embassy Skopje</div>
+        <div class="link-desc">Book your visa appointment at the German embassy in Skopje</div>
+        <div class="link-arrow">Book appointment →</div>
+      </a>
+
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Prepared for <span>North Macedonia Jamat</span> · Deedar 2026 · All information is subject to official confirmation
+</footer>
+
+<script>
+  // Countdown to June 5, 2026 23:59:59
+  const deadline = new Date('2026-06-05T23:59:59').getTime();
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = deadline - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '00';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      document.getElementById('cd-secs').textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
